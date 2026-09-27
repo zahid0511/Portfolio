@@ -136,7 +136,7 @@ window.PORTFOLIO = {
   timeline: [
     {
       type: "Training",
-      period: "2025",
+      period: "2026",
       title: "Data Analysis with Generative AI",
       org: "COE Kolkata",
       d: "Hands-on program covering the modern analytics workflow, from Python, SQL and Power BI to using generative AI to speed up analysis, reporting and insight generation.",
@@ -144,7 +144,7 @@ window.PORTFOLIO = {
     },
     {
       type: "Education",
-      period: "2021 — 2025",                        // PLACEHOLDER years
+      period: "2022 — 2026",                        // PLACEHOLDER years
       title: "B.Tech, Computer Science Engineering",
       org: "University Name, Kolkata",             // PLACEHOLDER
       d: "Foundations in data structures, algorithms, DBMS, operating systems and machine learning. Academic projects focused on data analysis and applied AI.",
