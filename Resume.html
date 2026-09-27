@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MD Zahid · Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#EAE6DA;font-family:Geist,sans-serif;color:#16150F;padding:40px 16px}
+  .page{max-width:820px;margin:0 auto;background:#FBFAF6;padding:56px 60px;box-shadow:0 20px 60px -30px rgba(0,0,0,.3)}
+  h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:56px;letter-spacing:-.02em;line-height:1}
+  .role{margin-top:8px;color:#C2461B;font-family:'JetBrains Mono',monospace;font-size:13px}
+  .links{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13.5px;color:#3A382F}
+  .links a{color:inherit}
+  h2{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C2461B;margin:34px 0 12px;padding-bottom:8px;border-bottom:1px solid #D6D1C3}
+  p,li{font-size:14.5px;line-height:1.6;color:#3A382F}
+  .item{margin-bottom:16px}
+  .row{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .t{font-weight:600;color:#16150F;font-size:15px}
+  .m{font-family:'JetBrains Mono',monospace;font-size:12px;color:#7A766A;white-space:nowrap}
+  ul{padding-left:18px;margin-top:4px}
+  .bar{max-width:820px;margin:0 auto 14px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:12px}
+  .bar a,.bar button{color:#16150F;background:none;border:1px solid #16150F33;border-radius:99px;padding:8px 14px;cursor:pointer;text-decoration:none;font:inherit}
+  @media(max-width:600px){.page{padding:32px 24px}h1{font-size:42px}.row{flex-direction:column;gap:2px}}
+  @media print{body{background:#fff;padding:0}.page{box-shadow:none;padding:24px}.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="bar"><a href="Portfolio.html">← Back to portfolio</a><button onclick="window.print()">Save as PDF</button></div>
+<div class="page" id="r"></div>
+<script src="data.js"></script>
+<script>
+  const d = window.PORTFOLIO, L = d.links;
+  document.getElementById('r').innerHTML = `
+    <h1>${d.name}</h1>
+    <div class="role">${d.role} · ${d.location}</div>
+    <div class="links"><a href="mailto:${L.email}">${L.email}</a><a href="${L.linkedin}">${L.linkedin.replace(/^https?:\/\/(www\.)?/,'')}</a><a href="${L.github}">${L.github.replace(/^https?:\/\//,'')}</a></div>
+    <h2>Summary</h2><p>${d.intro}</p>
+    <h2>Skills</h2><p>${d.skills.map(s=>`<b style="color:#16150F">${s.name}</b> (${s.tools.join(', ')})`).join(' · ')}</p>
+    <h2>Projects</h2>${d.projects.map(p=>`<div class="item"><div class="row"><span class="t">${p.title}</span><span class="m">${p.stack.slice(0,4).join(' · ')}</span></div><p>${p.summary}</p><ul>${p.approach.slice(0,2).map(a=>`<li>${a}</li>`).join('')}</ul></div>`).join('')}
+    <h2>Education & Training</h2>${d.timeline.map(t=>`<div class="item"><div class="row"><span class="t">${t.title} · ${t.org}</span><span class="m">${t.period}</span></div><p>${t.d}</p></div>`).join('')}
+  `;
+</script>
+</body>
+</html>
